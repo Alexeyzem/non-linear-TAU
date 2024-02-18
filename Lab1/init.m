@@ -7,3 +7,4 @@ Lov = 0.013;
 T = (Lov+Lya)/Rya;
 K1 = Cm*Cw;
 Uu = 2;
+b=0.001;
