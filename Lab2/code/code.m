@@ -3,8 +3,8 @@ clear all;
 close all;
                    
 
-XMAX = 5;                   
-STEP = 0.5;               
+XMAX = 12;                    
+STEP = 1;               
 TMAX = 10;                  
 
 [x1, x2] = meshgrid(-XMAX: STEP: XMAX); 
@@ -16,34 +16,34 @@ plotLocus(x1, x2, dx, event_out_of_bounds, TMAX); % строим фазовые 
 plotQuiver(x1, x2, dx); % строим стрелочки
 
 %в окрестности первой особой точки(0.2;0)
-[x1, x2] = meshgrid(0: 0.1: 0.4,  -0.2: 0.1: 0.2); 
-plotLocus(x1, x2, dx, event_out_of_bounds, TMAX); 
-plotQuiver(x1, x2, dx); % строим стрелочки
+%[x1, x2] = meshgrid(0: 0.1: 0.4,  -0.2: 0.1: 0.2); 
+%plotLocus(x1, x2, dx, event_out_of_bounds, TMAX); 
+%plotQuiver(x1, x2, dx); 
 
 %в окрестности второй особой точки(1.47;0)
-[x1, x2] = meshgrid(1: 0.1: 2, -1: 0.1: 1); 
-plotLocus(x1, x2, dx, event_out_of_bounds, TMAX);
-plotQuiver(x1, x2, dx); % строим стрелочки
+%[x1, x2] = meshgrid(1: 0.1: 2, -1: 0.1: 1); 
+%plotLocus(x1, x2, dx, event_out_of_bounds, TMAX);
+%plotQuiver(x1, x2, dx); 
 
 %в окрестности второй особой точки(-1.67;0)
-[x1, x2] = meshgrid(-2.2: 0.1: -1.2, -0.5: 0.1: 0.5); 
-plotLocus(x1, x2, dx, event_out_of_bounds, TMAX); 
-plotQuiver(x1, x2, dx); % строим стрелочки
+%[x1, x2] = meshgrid(-2.2: 0.1: -1.2, -0.5: 0.1: 0.5); 
+%plotLocus(x1, x2, dx, event_out_of_bounds, TMAX); 
+%plotQuiver(x1, x2, dx); 
 
 [x1, x2] = meshgrid(-XMAX: STEP: XMAX); 
 %Для пункта Б - континуум особых точек 
-dx = @(t, x) ContinuumFuncGrad(t, x);
-plotLocus(x1, x2, dx, event_out_of_bounds, TMAX); 
-plotQuiver(x1, x2, dx); 
+%dx = @(t, x) ContinuumFuncGrad(t, x);
+%plotLocus(x1, x2, dx, event_out_of_bounds, TMAX); 
+%plotQuiver(x1, x2, dx); 
  
 %Для пункта А - вырожденная особая точка
-dx = @(t, x) SpecialDotFuncGrad(t, x);
-plotLocus(x1, x2, dx, event_out_of_bounds, TMAX); 
-plotQuiver(x1, x2, dx);
+%dx = @(t, x) SpecialDotFuncGrad(t, x);
+%plotLocus(x1, x2, dx, event_out_of_bounds, TMAX); 
+%plotQuiver(x1, x2, dx);
 
 function dxdt = funcGrad(t, x)
-dxdt(1, :) = x(2, :);
-dxdt(2, :) = x(2, :).*x(1, :) + 2.*x(1, :).^3 - 5.*x(1, :) + 1;
+dxdt(1, :) = x(1, :).^3 + x(2, :);
+dxdt(2, :) = 8.*x(1, :) + x(1, :).* x(2, :);
 end
 
 
